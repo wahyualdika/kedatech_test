@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="view_material_tree" model="ir.ui.view">
+		<field name="name">Material Tree View</field>
+        <field name="model">material.product</field>
+        <field name="arch" type="xml">
+        	<tree>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="material_type"/>
+                <field name="unit_price"/>
+                <field name="partner_id"/>
+            </tree>
+        </field>
+	</record>
+
+	<record id="view_material_form" model="ir.ui.view">
+		<field name="name">Material Tree Form</field>
+        <field name="model">material.product</field>
+        <field name="arch" type="xml">
+        	<form>
+                <sheet>
+                	<group>
+                		<group>
+                			<field name="name"/>
+			                <field name="code"/>
+			                <field name="material_type"/>
+			                <field name="unit_price"/>
+			                <field name="partner_id"/>
+                		</group>
+                	</group>
+                </sheet>
+            </form>
+        </field>
+	</record>
+
+	<record id="view_material_filter" model="ir.ui.view">
+        <field name="name">material.filter</field>
+        <field name="model">material.product</field>
+        <field name="arch" type="xml">
+            <search string="Search Material Product">
+            	<field name="name" string="Material"
+                        filter_domain="['|', '|', ('name', 'ilike', self), ('partner_id', 'child_of', self)]"/>
+                <field name="partner_id" operator="child_of"/>
+                <filter name="jeans" string="Jeans" domain="[('material_type', '=', 'jean')]"/>
+                <filter name="cotton" string="Cotton" domain="[('material_type', '=', 'cotton')]"/>
+                <filter name="fabric" string="Fabric" domain="[('material_type', '=', 'fabric')]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Supplier" name="vendor" domain="[]" context="{'group_by': 'partner_id'}"/>
+                    <filter string="Material Type" name="material_type" domain="[]" context="{'group_by': 'material_type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+	<record id="action_material" model="ir.actions.act_window">
+        <field name="name">Material</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">material.product</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_material_filter"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Material
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_material_root"
+            name="Material Product"
+            sequence="1"/>
+
+    <menuitem id="menu_report_forecasr_line"
+            name="Material"
+            action="action_material"
+            parent="menu_material_root"
+            sequence="1"/>
+</odoo>

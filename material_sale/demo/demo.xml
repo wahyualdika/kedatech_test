@@ -1,0 +1,9 @@
+<odoo>
+	<record model="material.product" id="test_material">
+        <field name="name">Test MT</field>
+        <field name="code">T44rrr</field>
+        <field name="material_type">jean</field>
+        <field name="unit_price">150</field>
+        <field name="partner_id" ref="base.res_partner_2"/>
+    </record>
+</odoo>
