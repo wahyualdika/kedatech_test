@@ -52,7 +52,7 @@ class MaterialController(http.Controller):
             return json.dumps([])
 
 
-    @http.route(['/material/<int:material_id>',],csrf=False, auth="public", methods=['delete','post'])
+    @http.route(['/material/<int:material_id>',],csrf=False, auth="public", methods=['delete'])
     def update_material(self,material_id=None, **kwargs):
         if material_id:
             material = request.env['material.product'].sudo().browse(material_id)
