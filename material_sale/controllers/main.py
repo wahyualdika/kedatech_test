@@ -9,8 +9,6 @@ _logger = logging.getLogger(__name__)
 
 class MaterialController(http.Controller):
 
-    # Percobaan Controller
-
     @http.route(['/material', '/material/<string:material_type>',],csrf=False, auth="public", methods=['get'])
     def get_material(self,material_type=None, **kwargs):
         res = []
