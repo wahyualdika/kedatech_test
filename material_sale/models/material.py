@@ -21,4 +21,6 @@ class Material(models.Model):
 
 	_sql_constraints = [('check_price','CHECK(unit_price > 100)','Buy Price must be above 100')]
 
+	# Taie
+
 
