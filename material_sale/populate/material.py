@@ -13,6 +13,7 @@ class Material(models.Model):
 
     _populate_sizes = {'small': 450, 'medium': 15_000, 'large': 180_000}
 
+    # Taik Kuciang
     def _populate_get_types(self):
         return ["fabric", "jean","cotton"], [2, 1,2]
 
