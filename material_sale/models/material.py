@@ -15,8 +15,8 @@ class Material(models.Model):
 		],string="Material Type")
 	unit_price = fields.Float(string="Material Buy Price")
 	partner_id = fields.Many2one('res.partner',string="Supplier", domain="[('supplier_rank','!=',0)]")
-	# DAda
-	# TTTTTT
+	# Taik 
+	# Kudo
 
 	_sql_constraints = [('check_price','CHECK(unit_price > 100)','Buy Price must be above 100')]
 
