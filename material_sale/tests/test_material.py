@@ -24,5 +24,5 @@ class MaterialTest(TransactionCase):
         self.assertEqual(partner_status.supplier_rank, 1, "Partner is not a Vendor")
 
 
-    # def test_material_type(self):
-    #     self.assertIn(self.properties.material_type,['jean','cotton','fabric'],'Material Type is not registered')
+    def test_material_type(self):
+        self.assertIn(self.properties.material_type,['jean','cotton','fabric'],'Material Type is not registered')
